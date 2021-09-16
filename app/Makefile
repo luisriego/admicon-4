@@ -2,7 +2,7 @@
 
 OS = $(shell uname)
 UID = $(shell id -u)
-DOCKER_BE = admicon-4-be
+DOCKER_BE = admicon-4-app-be
 
 help: ## Show this help message
 	@echo 'usage: make [target]'
