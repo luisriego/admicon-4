@@ -1,0 +1,43 @@
+version: '3.5'
+
+services:
+  admicon-4-mailer-be:
+    container_name: admicon-4-mailer-be
+    build:
+      context: docker/php
+      args:
+        UID: $U_ID
+    volumes:
+      - ./:/appdata/www
+    ###> XDEBUG 3 ###
+    # Use your client IP here
+    # Linux: run "ip a | grep docker0"
+    # Windows (with WSL2) and Mac: host.docker.internal
+    environment:
+      XDEBUG_CLIENT_HOST: host.docker.internal
+      XDEBUG_CLIENT_PORT: 9003
+      PHP_IDE_CONFIG: serverName=admicon-4-mailer
+    networks:
+      - admicon-4-network
+
+  admicon-4-mailer-db:
+    container_name: admicon-4-mailer-db
+    build:
+      context: ./docker/database
+    ports:
+      - 10000:3306
+    environment:
+      MYSQL_DATABASE: database
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - admicon-4-mailer-db-data:/var/lib/mysql
+    networks:
+      - admicon-4-network
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+
+volumes:
+  admicon-4-mailer-db-data:
+
+networks:
+  admicon-4-network:
+    external: true

@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  admicon-4-rabbitmq-service:
+    container_name: admicon-4-rabbitmq-service
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - admicon-4-network
+
+networks:
+  admicon-4-network:
+    external: true
