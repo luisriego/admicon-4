@@ -15,11 +15,11 @@ class FunctionalTestBase extends WebTestCase
 {
     use RecreateDatabaseTrait;
 
-    private static ?KernelBrowser $client = null;
+    protected static ?KernelBrowser $client = null;
     protected static ?KernelBrowser $baseClient = null;
     protected static ?KernelBrowser $authenticatedClient = null;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
