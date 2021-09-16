@@ -1,10 +1,12 @@
 {
+    "name": "luisriego/admicon-ms",
+    "description": "Condominium controller application with Symfony 5.3, PHP 8.0, mySQL 8 and RabbitMQ",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=8.0.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "1.11.99.4",
