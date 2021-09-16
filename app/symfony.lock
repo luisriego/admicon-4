@@ -340,6 +340,9 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/password-hasher": {
+        "version": "v5.3.7"
+    },
     "symfony/phpunit-bridge": {
         "version": "5.3",
         "recipe": {
@@ -373,6 +376,9 @@
     "symfony/polyfill-php81": {
         "version": "v1.23.0"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.23.0"
+    },
     "symfony/property-access": {
         "version": "v5.3.7"
     },
@@ -398,6 +404,30 @@
     "symfony/runtime": {
         "version": "v5.3.4"
     },
+    "symfony/security-bundle": {
+        "version": "5.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.3",
+            "ref": "227eba5e0c7e8fc4beda3537c3d81dc23ba08182"
+        },
+        "files": [
+            "config/packages/security.yaml"
+        ]
+    },
+    "symfony/security-core": {
+        "version": "v5.3.7"
+    },
+    "symfony/security-csrf": {
+        "version": "v5.3.4"
+    },
+    "symfony/security-guard": {
+        "version": "v5.3.7"
+    },
+    "symfony/security-http": {
+        "version": "v5.3.7"
+    },
     "symfony/service-contracts": {
         "version": "v2.4.0"
     },
@@ -406,6 +436,9 @@
     },
     "symfony/string": {
         "version": "v5.3.7"
+    },
+    "symfony/uid": {
+        "version": "v5.3.3"
     },
     "symfony/var-dumper": {
         "version": "v5.3.7"
