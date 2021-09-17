@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\User;
 use App\Exception\User\UserNotFoundException;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -35,6 +37,15 @@ class UserRepository extends DoctrineBaseRepository implements PasswordUpgraderI
         }
 
         $user->setPassword($newHashedPassword);
+        $this->saveEntity($user);
+    }
+
+    /**
+     * @throws OptimisticLockException
+     * @throws ORMException
+     */
+    public function saveUser(User $user): void
+    {
         $this->saveEntity($user);
     }
 }

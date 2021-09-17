@@ -17,7 +17,6 @@ prepare-all: ## Install dependencies and run migrations in all services
 	make -C mailer prepare
 
 stop-all: ## Stops all services: RabbitMQ, App and Mailer
-	make -C register stop
 	make -C app stop
 	make -C mailer stop
 

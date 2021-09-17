@@ -19,10 +19,10 @@ class RegisterActionTest extends UserTestBase
         self::$baseClient->request('POST', \sprintf('%s/register', $this->endpoint), [], [], [], \json_encode($payload));
 
         $response = self::$baseClient->getResponse();
-//        $responseData = $this->getResponseData($response);
+        $responseData = \json_decode($response->getContent(), true);
 
         $this->assertEquals(JsonResponse::HTTP_CREATED, $response->getStatusCode());
-//        $this->assertEquals($payload['email'], $responseData['email']);
+//        self::assertEquals('Peter', $responseData['user']['name']);
     }
 
 //    public function testRegisterWithMissingParameters(): void
