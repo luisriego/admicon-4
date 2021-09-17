@@ -3,10 +3,10 @@
 #    controller: App\Controller\DefaultController::index
 api_health_check:
   path: /api/v1/health-check
-  controller: App\Api\Action\HealthCheckAction
+  controller: App\Api\HealthCheckAction
   methods: [GET]
 
 api_register:
   path: /api/v1/users/register
-  controller: App\Api\Action\User\RegisterAction
+  controller: App\Api\User\RegisterAction
   methods: [POST]

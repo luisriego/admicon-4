@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Acction\User;
+namespace App\Tests\Functional\User;
 
 use App\Tests\Functional\FunctionalTestBase;
 

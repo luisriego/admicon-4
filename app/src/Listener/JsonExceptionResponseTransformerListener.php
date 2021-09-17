@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Listener;
+namespace App\Listener;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;

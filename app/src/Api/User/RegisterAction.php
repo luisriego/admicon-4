@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Action\User;
+namespace App\Api\User;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -22,7 +22,7 @@ class RegisterAction
 
         $user = new User($responseData['name'], $responseData['email']);
         $user->setPassword($responseData['password']);
-        $this->userRepository->saveUser($user);
+        $this->userRepository->save($user);
 
         return new JsonResponse(null, Response::HTTP_CREATED);
     }

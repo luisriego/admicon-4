@@ -12,7 +12,7 @@ App\Entity\User:
     register:
       method: POST
       path: /users/register
-      controller: App\Api\Action\User\Register
+      controller: App\Api\User\RegisterAction
       denormalization_context:
         groups: [user_register]
       openapi_context:
@@ -20,7 +20,7 @@ App\Entity\User:
 #    resend_activation_email:
 #      method: POST
 #      path: /users/resend_activation_email
-#      controller: App\Api\Action\User\ResendActivationEmail
+#      controller: App\Api\User\ResendActivationEmail
 #      deserialize: false
 #      openapi_context:
 #        summary: Sends activation email to inactive user
@@ -71,7 +71,7 @@ App\Entity\User:
 #    request_reset_password:
 #      method: POST
 #      path: /users/request_reset_password
-#      controller: App\Api\Action\User\RequestResetPassword
+#      controller: App\Api\User\RequestResetPassword
 #      deserialize: false
 #      openapi_context:
 #        summary: Request an email with a URL to reset a user password
@@ -97,7 +97,7 @@ App\Entity\User:
 #    upload_avatar:
 #      method: POST
 #      path: /users/{id}/avatar
-#      controller: App\Api\Action\User\UploadAvatar
+#      controller: App\Api\User\UploadAvatar
 #      deserialize: false
 #      openapi_context:
 #        summary: Updates the user avatar
@@ -113,7 +113,7 @@ App\Entity\User:
 #    facebook_auth:
 #      method: POST
 #      path: /users/facebook/auth
-#      controller: App\Api\Action\Facebook\Authorization
+#      controller: App\Api\Facebook\Authorization
 #      deserialize: false
 #      openapi_context:
 #        summary: OAuth with Facebook
@@ -151,7 +151,7 @@ App\Entity\User:
 #    activate:
 #      method: PUT
 #      path: /users/{id}/activate
-#      controller: App\Api\Action\User\ActivateAccount
+#      controller: App\Api\User\ActivateAccount
 #      deserialize: false
 #      denormalization_context:
 #        groups: [user_activate]
@@ -160,7 +160,7 @@ App\Entity\User:
 #    reset_password:
 #      method: PUT
 #      path: /users/{id}/reset_password
-#      controller: App\Api\Action\User\ResetPassword
+#      controller: App\Api\User\ResetPassword
 #      deserialize: false
 #      openapi_context:
 #        summary: Reset user password
@@ -186,7 +186,7 @@ App\Entity\User:
 #    change_password:
 #      method: PUT
 #      path: /users/{id}/change_password
-#      controller: App\Api\Action\User\ChangePassword
+#      controller: App\Api\User\ChangePassword
 #      deserialize: false
 #      openapi_context:
 #        summary: Changes user password

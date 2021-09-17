@@ -44,7 +44,7 @@ class UserRepository extends DoctrineBaseRepository implements PasswordUpgraderI
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function saveUser(User $user): void
+    public function save(User $user): void
     {
         $this->saveEntity($user);
     }
