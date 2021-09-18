@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
@@ -31,7 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->email = $email;
         $this->password = null;
         $this->avatar = null;
-        $this->token = null;
+        $this->token = \sha1(\uniqid());
         $this->resetPasswordToken = null;
         $this->active = false;
         $this->createdAt = new \DateTime();
@@ -201,5 +202,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+
+    public function toArray(): array
+    {
+        return [
+            "user" => [
+                "id" => $this->id,
+                "name" => $this->name,
+                "email" => $this->email,
+                "active" => $this->active,
+                "activationCode" => $this->getToken(),
+                "createdOn" => $this->createdAt->format(\DateTime::RFC3339),
+            ]
+        ];
     }
 }

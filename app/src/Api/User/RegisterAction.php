@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Api\User;
 
 use App\Entity\User;
+use App\Http\DTO\RegisterRequest;
 use App\Repository\UserRepository;
+use App\Service\User\RegisterService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,17 +15,14 @@ use Symfony\Component\HttpFoundation\Response;
 class RegisterAction
 {
 
-    public function __construct(private UserRepository $userRepository)
+    public function __construct(private RegisterService $registerService)
     { }
 
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(RegisterRequest $request): JsonResponse
     {
-        $responseData = \json_decode($request->getContent(), true);
+        $user = $this->registerService->__invoke($request->getName(), $request->getEmail(), $request->getPassword());
 
-        $user = new User($responseData['name'], $responseData['email']);
-        $user->setPassword($responseData['password']);
-        $this->userRepository->save($user);
 
-        return new JsonResponse(null, Response::HTTP_CREATED);
+        return new JsonResponse($user->toArray(), Response::HTTP_CREATED);
     }
 }

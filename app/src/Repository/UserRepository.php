@@ -3,9 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Exception\User\UserAlreadyExistException;
 use App\Exception\User\UserNotFoundException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -46,6 +48,16 @@ class UserRepository extends DoctrineBaseRepository implements PasswordUpgraderI
      */
     public function save(User $user): void
     {
-        $this->saveEntity($user);
+        $this->persistEntity($user);
+
+        try {
+            $this->flushData();
+        } catch (\Exception $e) {
+            throw UserAlreadyExistException::fromEmail($user->getEmail());
+            // throw new ConflictHttpException('User already exist');
+        }
+
+        
+        // $this->saveEntity($user);
     }
 }
